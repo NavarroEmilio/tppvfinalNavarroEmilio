@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Listado de Cuestionarios</title>
+<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
+</head>
+<body>
+
+<div class="table-responsive">
+<table class="table table-sm table-dark table-hover">
+<thead>
+ <tr class="text-center">
+  <th scope="col">Id</th>
+  <th scope="col">Nombre</th>
+  <th scope="col">Pregunta 1</th>
+  <th scope="col">Pregunta 2</th>
+  <th scope="col">Pregunta 3</th>
+ </tr>
+</thead>
+<tbody class="table-group-divider">
+
+   <tr th:each="cuest : ${listadoCuestionarios}" class="text-center">
+     <td class="black" th:text="${cuest.idCuestionario}"></td>
+     <td class="black" th:text="${cuest.nombreCuestionario}"></td>
+     <td class="black" th:text="${cuest.pregunta1}"></td>
+     <td class="black" th:text="${cuest.pregunta2}"></td>
+     <td class="black" th:text="${cuest.pregunta3}"></td>
+     
+         
+</tr>
+</tbody>
+</table>
+</div>
+
+<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.min.js}" type="text/javascript" 
+src="webjars/bootstrap/5.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

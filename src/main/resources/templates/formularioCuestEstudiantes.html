@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+        </div>
+        <div class="col-6">
+<form th:object="${cuestEstudiante}" th:action="@{/cargarCuestEstudiante}" method="post">
+                <div class="form-group mb-3">
+                
+                    <label class="form-label">Id</label>
+                    <input class="form-control" type="number" th:field="*{idCuestionario}"/><br>
+                    <label class="form-label">Nombre</label>
+                    <input class="form-control" type="text" th:field="*{nombreCuestionario}"/><br>
+                    <label class="form-label">Pregunta 1</label>
+                    <input class="form-control" type="text" th:field="*{pregunta1}"/><br>
+                    <label class="form-label">Pregunta 2</label>
+                    <input class="form-control" type="text" th:field="*{pregunta2}"/><br>
+                    <label class="form-label">Pregunta 3</label>
+                    <input class="form-control" type="text" th:field="*{pregunta3}"/><br>
+                    
+                    <input class="btn btn-primary" type="submit" value="CARGAR">
+                     </div>
+            </form>
+             </div>
+        <div class="col-3">
+        </div>
+    </div>
+</div>
+<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.min.js}" type="text/javascript" 
+src="webjars/bootstrap/5.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
