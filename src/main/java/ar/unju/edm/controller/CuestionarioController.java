@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.unju.edm.model.Cuestionario;
 import ar.unju.edm.service.CuestionarioService;
+import ar.unju.edm.service.DocenteService;
 
 @Controller
 public class CuestionarioController {
@@ -17,12 +18,16 @@ public class CuestionarioController {
 	CuestionarioService cuestionarioService;
 	
 	@Autowired
+	DocenteService docenteService;
+	
+	@Autowired
 	Cuestionario unCuestionario;
 	
 	@GetMapping("/cuestionario")
 	public ModelAndView cargarCuestionario() {
 		ModelAndView modelAndView = new ModelAndView("formularioCuestionarios");
 		modelAndView.addObject("cuestionario",unCuestionario);
+		modelAndView.addObject("docente",docenteService.listarDocentes());
 		
 		return modelAndView;
 		
