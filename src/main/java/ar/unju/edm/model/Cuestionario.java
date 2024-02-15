@@ -1,52 +1,62 @@
 package ar.unju.edm.model;
 
+
 import org.springframework.stereotype.Component;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
+
 
 @Component
 @Entity
 public class Cuestionario {
-	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer idCuestionario;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id_Cuestionario;
 	
-	@ManyToOne
-	@JoinColumn(name = "docente_id")
-	Docente docente;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_Docente")
+	private Docente docente;
 	
-	private String nombreCuestionario;
-	private String pregunta1;
-	private String pregunta2;
-	private String pregunta3;
+	@NotBlank(message= "titulo is required")
+	private String titulo;
+	
+	private String descripcion;
+
+	private Boolean estado;
+	
+	private Integer puntajeTotal;
 	
 	public Cuestionario() {
-		// TODO Auto-generated constructor stub
 	}
 
-	public Cuestionario(Integer idCuestionario, Docente docente, String nombreCuestionario, String pregunta1,
-			String pregunta2, String pregunta3) {
+
+	public Cuestionario(Integer id_Cuestionario, Docente docente,
+			@NotBlank(message = "titulo is required") String titulo, String descripcion, Boolean estado,
+			Integer puntajeTotal) {
 		super();
-		this.idCuestionario = idCuestionario;
+		this.id_Cuestionario = id_Cuestionario;
 		this.docente = docente;
-		this.nombreCuestionario = nombreCuestionario;
-		this.pregunta1 = pregunta1;
-		this.pregunta2 = pregunta2;
-		this.pregunta3 = pregunta3;
+		this.titulo = titulo;
+		this.descripcion = descripcion;
+		this.estado = estado;
+		this.puntajeTotal = puntajeTotal;
 	}
 
-	public Integer getIdCuestionario() {
-		return idCuestionario;
+
+
+	public Integer getId_Cuestionario() {
+		return id_Cuestionario;
 	}
 
-	public void setIdCuestionario(Integer idCuestionario) {
-		this.idCuestionario = idCuestionario;
+	public void setId_Cuestionario(Integer id_Cuestionario) {
+		this.id_Cuestionario = id_Cuestionario;
 	}
 
 	public Docente getDocente() {
@@ -57,44 +67,39 @@ public class Cuestionario {
 		this.docente = docente;
 	}
 
-	public String getNombreCuestionario() {
-		return nombreCuestionario;
+	public String getTitulo() {
+		return titulo;
 	}
 
-	public void setNombreCuestionario(String nombreCuestionario) {
-		this.nombreCuestionario = nombreCuestionario;
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
-	public String getPregunta1() {
-		return pregunta1;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public void setPregunta1(String pregunta1) {
-		this.pregunta1 = pregunta1;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
-	public String getPregunta2() {
-		return pregunta2;
+	public Boolean getEstado() {
+		return estado;
 	}
 
-	public void setPregunta2(String pregunta2) {
-		this.pregunta2 = pregunta2;
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
 	}
 
-	public String getPregunta3() {
-		return pregunta3;
+	public Integer getPuntajeTotal() {
+		return puntajeTotal;
 	}
 
-	public void setPregunta3(String pregunta3) {
-		this.pregunta3 = pregunta3;
+	public void setPuntajeTotal(Integer puntajeTotal) {
+		this.puntajeTotal = puntajeTotal;
 	}
 	
 	
 
 	
-	
-
-
-
 }
-
